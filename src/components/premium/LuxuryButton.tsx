@@ -37,7 +37,7 @@ export default function LuxuryButton({
 
   const sizes = {
     default: "h-11 rounded-xl px-6 text-sm",
-    lg: "h-13 rounded-xl px-8 text-base",
+    lg: "h-[52px] rounded-xl px-8 text-base",
   };
 
   const classes = cn(base, variants[variant], sizes[size], className);

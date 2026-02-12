@@ -56,7 +56,7 @@ export default function Header() {
             width={160}
             height={52}
             className={cn(
-              "h-9 w-auto transition-all duration-300 md:h-11",
+              "h-11 w-auto transition-all duration-300 md:h-14",
               scrolled || !isHeroPage ? "" : "brightness-0 invert"
             )}
             priority
@@ -138,7 +138,7 @@ export default function Header() {
                     alt="Sulfurea Wellness & SPA"
                     width={130}
                     height={42}
-                    className="h-8 w-auto"
+                    className="h-10 w-auto"
                   />
                   <SheetClose asChild>
                     <button className="rounded-xl p-1.5 text-brand-brown hover:bg-brand-beige" aria-label="Chiudi menu">

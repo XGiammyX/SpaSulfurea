@@ -228,8 +228,8 @@
     max-width: var(--container-max);
     margin-left: auto;
     margin-right: auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
   @media (min-width: 768px) {
     .container-luxury {
@@ -237,11 +237,26 @@
       padding-right: 1.5rem;
     }
   }
-  @media (min-width: 1024px) {
+  @media (min-width: 1280px) {
     .container-luxury {
-      padding-left: 2rem;
-      padding-right: 2rem;
+      padding-left: 3rem;
+      padding-right: 3rem;
     }
+  }
+
+  /* ── Touch target minimum (accessibility) ── */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* ── CSS-only fade-in (perf: no JS needed) ── */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in {
+    animation: fadeInUp 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) both;
   }
 
   /* ── Noise overlay (very subtle, premium texture) ── */
@@ -285,5 +300,17 @@
   /* ── Premium card border (low opacity, subtle) ── */
   .border-luxury {
     border: 1px solid rgba(237, 220, 197, 0.5);
+  }
+
+  /* ── Consistent section vertical rhythm ── */
+  .section-padding {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+  @media (min-width: 768px) {
+    .section-padding {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
   }
 }

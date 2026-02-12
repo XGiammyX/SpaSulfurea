@@ -61,13 +61,19 @@ export default function RootLayout({
   return (
     <html lang="it">
       <body className={`${manrope.variable} antialiased`}>
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-xl focus:bg-brand-brown focus:px-6 focus:py-3 focus:text-white focus:shadow-premium"
+        >
+          Vai al contenuto principale
+        </a>
         <LocalBusinessJsonLd />
         <Header />
-        <main className="min-h-screen">{children}</main>
+        <main id="main-content" className="min-h-screen">{children}</main>
         <Footer />
         <MobileBookingBar />
         {/* Safe area for mobile sticky bar */}
-        <div className="h-14 lg:hidden" />
+        <div className="h-[60px] lg:hidden" />
       </body>
     </html>
   );
