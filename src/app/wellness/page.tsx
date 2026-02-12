@@ -28,9 +28,6 @@ const categories = [
 
 const treatmentImages: Record<string, string> = {
   "percorso-spa": "/images/percorso-spa.jpg",
-  "bagno-turco": "/images/bagno-turco.jpg",
-  "sauna-finlandese": "/images/sauna-finlandese.jpg",
-  "piscina-termale": "/images/piscina-termale.jpg",
   "massaggio-rilassante": "/images/massaggio.jpg",
 };
 

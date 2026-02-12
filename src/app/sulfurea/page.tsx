@@ -85,7 +85,7 @@ export default function SulfureaPage() {
             <FadeIn direction="right">
               <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
                 <Image
-                  src="/images/sulfurea-interni.jpg"
+                  src="/images/gallery-1.jpg"
                   alt="Interni Sulfurea SPA"
                   fill
                   className="object-cover"
@@ -133,7 +133,7 @@ export default function SulfureaPage() {
             <FadeIn direction="left">
               <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
                 <Image
-                  src="/images/esperienza.jpg"
+                  src="/images/percorso-spa.jpg"
                   alt="Esperienza Sulfurea"
                   fill
                   className="object-cover"

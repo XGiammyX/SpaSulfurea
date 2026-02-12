@@ -86,7 +86,7 @@ export default function BookingFlow() {
   }, [preselected]);
 
   return (
-    <div className="container-luxury pb-20 md:pb-28">
+    <div className="rounded-2xl border-luxury bg-white p-6 shadow-premium md:p-10">
       {/* Stepper */}
       <div className="mb-10 flex items-center justify-center gap-2 md:gap-4">
         {steps.map((s, i) => (

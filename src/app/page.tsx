@@ -22,9 +22,6 @@ import { siteConfig } from "@/site.config";
 
 const treatmentImages: Record<string, string> = {
   "percorso-spa": "/images/percorso-spa.jpg",
-  "bagno-turco": "/images/bagno-turco.jpg",
-  "sauna-finlandese": "/images/sauna-finlandese.jpg",
-  "piscina-termale": "/images/piscina-termale.jpg",
   "massaggio-rilassante": "/images/massaggio.jpg",
 };
 
@@ -166,7 +163,7 @@ export default function HomePage() {
             <FadeIn direction="left">
               <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
                 <Image
-                  src="/images/esperienza.jpg"
+                  src="/images/hero-sulfurea.jpg"
                   alt="Il percorso Sulfurea"
                   fill
                   className="object-cover"
@@ -267,10 +264,10 @@ export default function HomePage() {
           <div className="mt-12 grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
             {[
               { src: "/images/gallery-1.jpg", alt: "Ingresso SPA", span: "" },
-              { src: "/images/bagno-turco.jpg", alt: "Bagno turco", span: "" },
-              { src: "/images/piscina-termale.jpg", alt: "Piscina termale", span: "col-span-2 row-span-2" },
-              { src: "/images/sauna-finlandese.jpg", alt: "Sauna finlandese", span: "" },
-              { src: "/images/gallery-2.jpg", alt: "Area relax", span: "" },
+              { src: "/images/percorso-spa.jpg", alt: "Trattamento SPA", span: "" },
+              { src: "/images/hero-wellness.jpg", alt: "Hot stone massage", span: "col-span-2 row-span-2" },
+              { src: "/images/massaggio.jpg", alt: "Massaggio rilassante", span: "" },
+              { src: "/images/hero-sulfurea.jpg", alt: "Olio essenziale", span: "" },
             ].map((img, i) => (
               <FadeIn key={i} delay={i * 0.05} className={img.span}>
                 <div className="relative h-full min-h-[160px] overflow-hidden rounded-2xl md:min-h-[200px]">
@@ -320,7 +317,7 @@ export default function HomePage() {
             <FadeIn direction="right">
               <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
                 <Image
-                  src="/images/hero-hotel.jpg"
+                  src="/images/hotel-camera.jpg"
                   alt="Hotel La Torre Palinuro"
                   fill
                   className="object-cover"

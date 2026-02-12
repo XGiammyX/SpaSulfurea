@@ -43,18 +43,18 @@ const features = [
 
 const hotelGallery = [
   { src: "/images/hotel-camera.jpg", alt: "Camera" },
-  { src: "/images/hotel-vista.jpg", alt: "Vista mare" },
-  { src: "/images/hotel-terrazza.jpg", alt: "Terrazza" },
-  { src: "/images/hotel-colazione.jpg", alt: "Colazione" },
-  { src: "/images/hotel-ingresso.jpg", alt: "Ingresso" },
-  { src: "/images/hotel-piscina.jpg", alt: "Piscina hotel" },
+  { src: "/images/hotel-terrazza.jpg", alt: "Camera con vista" },
+  { src: "/images/hotel-colazione.jpg", alt: "Ristorante" },
+  { src: "/images/hotel-ingresso.jpg", alt: "Area esterna" },
+  { src: "/images/hotel-piscina.jpg", alt: "Piscina" },
+  { src: "/images/gallery-1.jpg", alt: "Area relax" },
 ];
 
 export default function HotelPage() {
   return (
     <>
       <HeroLuxury
-        image="/images/hero-hotel.jpg"
+        image="/images/hotel-camera.jpg"
         imageAlt="Hotel La Torre Palinuro"
         overline="Completa l'esperienza"
         title={siteConfig.hotel.name}
@@ -101,8 +101,8 @@ export default function HotelPage() {
             <FadeIn direction="left">
               <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
                 <Image
-                  src="/images/hotel-vista.jpg"
-                  alt="Hotel La Torre vista mare"
+                  src="/images/gallery-1.jpg"
+                  alt="Hotel La Torre relax area"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"

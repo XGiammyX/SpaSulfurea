@@ -41,18 +41,13 @@ const experiences = [
   },
 ];
 
-const placeImages: Record<string, string> = {
-  "Capo Palinuro": "/images/cilento-capo-palinuro.jpg",
-  "Parco Nazionale": "/images/cilento-parco.jpg",
-  "Borghi storici": "/images/cilento-borgo.jpg",
-  "Dieta Mediterranea": "/images/cilento-dieta.jpg",
-};
+const placeImages: Record<string, string> = {};
 
 export default function TerritorioPage() {
   return (
     <>
       <HeroLuxury
-        image="/images/hero-territorio.jpg"
+        image="/images/hero-home.jpg"
         imageAlt="Costa del Cilento"
         overline="Il Territorio"
         title="Cilento"
@@ -156,8 +151,8 @@ export default function TerritorioPage() {
             <FadeIn direction="right">
               <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
                 <Image
-                  src="/images/cilento-capo-palinuro.jpg"
-                  alt="Panorama Cilento"
+                  src="/images/hero-home.jpg"
+                  alt="Costa del Cilento al tramonto"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
