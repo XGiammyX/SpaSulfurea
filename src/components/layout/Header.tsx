@@ -34,7 +34,7 @@ export default function Header() {
   }, []);
 
   const headerBg = scrolled || !isHeroPage
-    ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-brand-beige-dark/50"
+    ? "bg-white/90 backdrop-blur-xl shadow-soft border-b border-brand-beige-dark/20"
     : "bg-transparent";
 
   const textColor = scrolled || !isHeroPage ? "text-brand-brown-dark" : "text-white";
@@ -46,7 +46,7 @@ export default function Header() {
         headerBg
       )}
     >
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:h-20 md:px-6 lg:px-8">
+      <div className="container-luxury flex h-16 items-center justify-between md:h-20">
         {/* Logo */}
         <Link href="/" className="relative z-10 flex items-center gap-2">
           <span
@@ -66,7 +66,7 @@ export default function Header() {
               key={item.href}
               href={item.href}
               className={cn(
-                "rounded-md px-3 py-2 text-sm font-medium transition-colors duration-200",
+                "rounded-xl px-3 py-2 text-sm font-medium transition-all duration-200",
                 pathname === item.href
                   ? scrolled || !isHeroPage
                     ? "bg-brand-beige text-brand-brown-dark"
@@ -97,7 +97,7 @@ export default function Header() {
           <Button
             asChild
             size="sm"
-            className="bg-brand-brown text-white hover:bg-brand-brown-dark"
+            className="rounded-xl bg-brand-brown text-white hover:bg-brand-brown-dark"
             onClick={() => trackEvent("header_prenota_click")}
           >
             <Link href="/prenota">Prenota ora</Link>
@@ -109,7 +109,7 @@ export default function Header() {
           <Button
             asChild
             size="sm"
-            className="bg-brand-brown text-white hover:bg-brand-brown-dark"
+            className="rounded-xl bg-brand-brown text-white hover:bg-brand-brown-dark"
             onClick={() => trackEvent("header_prenota_click")}
           >
             <Link href="/prenota">Prenota</Link>
@@ -118,7 +118,7 @@ export default function Header() {
             <SheetTrigger asChild>
               <button
                 className={cn(
-                  "flex h-10 w-10 items-center justify-center rounded-md transition-colors",
+                  "flex h-10 w-10 items-center justify-center rounded-xl transition-colors",
                   textColor
                 )}
                 aria-label="Apri menu"
@@ -128,17 +128,17 @@ export default function Header() {
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] bg-white p-0">
               <div className="flex h-full flex-col">
-                <div className="flex items-center justify-between border-b border-brand-beige-dark/50 px-6 py-4">
+                <div className="flex items-center justify-between border-b border-brand-beige-dark/20 px-6 py-5">
                   <span className="font-display text-lg text-brand-brown-dark">
                     {siteConfig.name}
                   </span>
                   <SheetClose asChild>
-                    <button className="rounded-md p-1 text-brand-brown hover:bg-brand-beige" aria-label="Chiudi menu">
+                    <button className="rounded-xl p-1.5 text-brand-brown hover:bg-brand-beige" aria-label="Chiudi menu">
                       <X className="h-5 w-5" />
                     </button>
                   </SheetClose>
                 </div>
-                <nav className="flex flex-1 flex-col gap-1 p-4" aria-label="Menu mobile">
+                <nav className="flex flex-1 flex-col gap-1 p-5" aria-label="Menu mobile">
                   <AnimatePresence>
                     {navItems.map((item, i) => (
                       <motion.div
@@ -151,7 +151,7 @@ export default function Header() {
                           href={item.href}
                           onClick={() => setOpen(false)}
                           className={cn(
-                            "flex rounded-lg px-4 py-3 text-base font-medium transition-colors",
+                            "flex rounded-xl px-4 py-3 text-base font-medium transition-all duration-200",
                             pathname === item.href
                               ? "bg-brand-beige text-brand-brown-dark"
                               : "text-brand-brown hover:bg-brand-beige/60"
@@ -163,10 +163,10 @@ export default function Header() {
                     ))}
                   </AnimatePresence>
                 </nav>
-                <div className="border-t border-brand-beige-dark/50 p-4">
+                <div className="border-t border-brand-beige-dark/20 p-5">
                   <Button
                     asChild
-                    className="w-full bg-brand-brown text-white hover:bg-brand-brown-dark"
+                    className="w-full rounded-xl bg-brand-brown text-white hover:bg-brand-brown-dark"
                     onClick={() => {
                       trackEvent("header_prenota_click");
                       setOpen(false);
