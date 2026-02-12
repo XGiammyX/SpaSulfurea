@@ -24,18 +24,19 @@ const footerNav = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-brand-beige-dark/50 bg-brand-brown-dark text-brand-beige-light">
-      <div className="mx-auto max-w-7xl px-4 py-12 md:px-6 lg:px-8">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+    <footer className="relative border-t border-white/5 bg-brand-brown-dark text-brand-beige-light">
+      <div className="noise-overlay absolute inset-0 opacity-30" />
+      <div className="container-luxury relative z-10 py-16 md:py-20">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link href="/" className="font-display text-2xl tracking-wide text-white">
               {siteConfig.name}
             </Link>
-            <p className="mt-3 text-sm leading-relaxed text-brand-tan-light/80">
+            <p className="mt-4 text-sm leading-relaxed text-brand-tan-light/70">
               {siteConfig.tagline}
             </p>
-            <div className="mt-4 flex gap-3">
+            <div className="mt-5 flex gap-3">
               {siteConfig.social.instagram && (
                 <a
                   href={siteConfig.social.instagram}
@@ -68,10 +69,10 @@ export default function Footer() {
           {/* Nav columns */}
           {footerNav.map((col) => (
             <div key={col.title}>
-              <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-brand-tan">
+              <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.15em] text-brand-tan">
                 {col.title}
-              </h3>
-              <ul className="space-y-2.5">
+              </p>
+              <ul className="space-y-3">
                 {col.links.map((link) => (
                   <li key={link.href}>
                     <Link
@@ -88,10 +89,10 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-brand-tan">
+            <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.15em] text-brand-tan">
               Contatti
-            </h3>
-            <ul className="space-y-2.5 text-sm text-brand-tan-light/70">
+            </p>
+            <ul className="space-y-3 text-sm text-brand-tan-light/60">
               <li>
                 <a
                   href={`tel:${siteConfig.contact.phone.replace(/\s/g, "")}`}
@@ -127,8 +128,8 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-10 border-t border-white/10 pt-6">
-          <div className="flex flex-col items-center justify-between gap-4 text-xs text-brand-tan-light/40 md:flex-row">
+        <div className="mt-14 border-t border-white/8 pt-8">
+          <div className="flex flex-col items-center justify-between gap-4 text-xs text-brand-tan-light/35 md:flex-row">
             <p>
               &copy; {new Date().getFullYear()} {siteConfig.legal.companyName}
               {siteConfig.legal.vatId && ` — P.IVA ${siteConfig.legal.vatId}`}

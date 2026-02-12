@@ -53,7 +53,7 @@ export default function ContactForm() {
 
   if (state === "success") {
     return (
-      <div className="rounded-xl border border-green-200 bg-green-50 p-8 text-center">
+      <div className="rounded-2xl border border-green-200 bg-green-50 p-8 text-center">
         <CheckCircle2 className="mx-auto h-10 w-10 text-green-600" />
         <h3 className="mt-4 font-display text-xl text-green-800">
           Messaggio inviato
@@ -82,13 +82,14 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="rounded-xl border border-brand-beige-dark/40 bg-white p-6">
-      <h2 className="font-display text-xl">Scrivici</h2>
-      <p className="mt-1 text-sm text-muted-foreground">
+    <div className="rounded-2xl border-luxury bg-white p-6 shadow-soft md:p-8">
+      <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-brand-tan-dark">Contattaci</p>
+      <h2 className="mt-2">Scrivici</h2>
+      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
         Compila il modulo e ti risponderemo entro poche ore.
       </p>
 
-      <form onSubmit={handleSubmit} className="mt-6 space-y-4" noValidate>
+      <form onSubmit={handleSubmit} className="mt-6 space-y-5" noValidate>
         <div>
           <label htmlFor="contact-name" className="mb-1 block text-sm font-medium text-brand-brown-dark">
             Nome *
@@ -98,7 +99,7 @@ export default function ContactForm() {
             value={form.name}
             onChange={(e) => setForm({ ...form, name: e.target.value })}
             placeholder="Il tuo nome"
-            className="border-brand-beige-dark bg-brand-beige-light/30 focus:border-brand-tan"
+            className="rounded-xl border-brand-beige-dark bg-brand-beige-light/30 focus:border-brand-tan"
           />
           {errors.name && <p className="mt-1 text-xs text-red-500">{errors.name}</p>}
         </div>
@@ -113,7 +114,7 @@ export default function ContactForm() {
             value={form.email}
             onChange={(e) => setForm({ ...form, email: e.target.value })}
             placeholder="nome@esempio.it"
-            className="border-brand-beige-dark bg-brand-beige-light/30 focus:border-brand-tan"
+            className="rounded-xl border-brand-beige-dark bg-brand-beige-light/30 focus:border-brand-tan"
           />
           {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email}</p>}
         </div>
@@ -128,7 +129,7 @@ export default function ContactForm() {
             value={form.phone}
             onChange={(e) => setForm({ ...form, phone: e.target.value })}
             placeholder="+39 000 000 0000"
-            className="border-brand-beige-dark bg-brand-beige-light/30 focus:border-brand-tan"
+            className="rounded-xl border-brand-beige-dark bg-brand-beige-light/30 focus:border-brand-tan"
           />
         </div>
 
@@ -142,13 +143,13 @@ export default function ContactForm() {
             value={form.message}
             onChange={(e) => setForm({ ...form, message: e.target.value })}
             placeholder="Come possiamo aiutarti?"
-            className="w-full rounded-md border border-brand-beige-dark bg-brand-beige-light/30 px-3 py-2 text-sm outline-none transition-colors focus:border-brand-tan focus:ring-1 focus:ring-brand-tan"
+            className="w-full rounded-xl border border-brand-beige-dark bg-brand-beige-light/30 px-3 py-2.5 text-sm outline-none transition-colors focus:border-brand-tan focus:ring-1 focus:ring-brand-tan"
           />
           {errors.message && <p className="mt-1 text-xs text-red-500">{errors.message}</p>}
         </div>
 
         {state === "error" && (
-          <div className="flex items-start gap-2 rounded-lg border border-red-200 bg-red-50 p-3">
+          <div className="flex items-start gap-2 rounded-xl border border-red-200 bg-red-50 p-4">
             <AlertCircle className="mt-0.5 h-4 w-4 text-red-500" />
             <div>
               <p className="text-sm text-red-700">

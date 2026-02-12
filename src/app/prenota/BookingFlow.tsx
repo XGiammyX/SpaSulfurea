@@ -86,16 +86,16 @@ export default function BookingFlow() {
   }, [preselected]);
 
   return (
-    <div className="mx-auto max-w-7xl px-4 pb-16 md:px-6 lg:px-8">
+    <div className="container-luxury pb-20 md:pb-28">
       {/* Stepper */}
-      <div className="mb-8 flex items-center justify-center gap-2 md:gap-4">
+      <div className="mb-10 flex items-center justify-center gap-2 md:gap-4">
         {steps.map((s, i) => (
           <div key={s.id} className="flex items-center gap-2">
             <button
               onClick={() => s.id < step && setStep(s.id)}
               disabled={s.id > step}
               className={cn(
-                "flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-medium transition-colors",
+                "flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-medium transition-all duration-200",
                 step === s.id
                   ? "bg-brand-brown text-white"
                   : s.id < step
@@ -115,15 +115,14 @@ export default function BookingFlow() {
         ))}
       </div>
 
-      <div className="grid gap-8 lg:grid-cols-3">
+      <div className="grid gap-10 lg:grid-cols-3">
         {/* Main content */}
         <div className="lg:col-span-2">
           {/* Step 1: Experience */}
           {step === 1 && (
             <div className="space-y-4">
-              <h2 className="font-display text-2xl tracking-tight">
-                Scegli la tua esperienza
-              </h2>
+              <p className="overline">Step 1</p>
+              <h2 className="mt-2">Scegli la tua esperienza</h2>
               <div className="grid gap-3 sm:grid-cols-2">
                 {enabledExperiences.map((exp) => (
                   <button
@@ -133,10 +132,10 @@ export default function BookingFlow() {
                       setStep(2);
                     }}
                     className={cn(
-                      "flex flex-col rounded-xl border p-4 text-left transition-all",
+                      "flex flex-col rounded-2xl border p-5 text-left transition-all duration-200",
                       experience === exp.slug
-                        ? "border-brand-brown bg-brand-beige shadow-sm"
-                        : "border-brand-beige-dark bg-white hover:border-brand-tan hover:shadow-sm"
+                        ? "border-brand-brown bg-brand-beige shadow-soft"
+                        : "border-luxury bg-white hover:border-brand-tan hover:shadow-soft"
                     )}
                   >
                     <span className="font-display text-lg">{exp.name}</span>
@@ -168,12 +167,11 @@ export default function BookingFlow() {
                 </button>
               </div>
 
-              <h2 className="font-display text-2xl tracking-tight">
-                Seleziona date e ospiti
-              </h2>
+              <p className="overline">Step 2</p>
+              <h2 className="mt-2">Seleziona date e ospiti</h2>
 
               {/* Date picker */}
-              <div className="rounded-xl border border-brand-beige-dark bg-white p-4">
+              <div className="rounded-2xl border-luxury bg-white p-5 shadow-soft">
                 <label className="mb-2 block text-sm font-medium text-brand-brown-dark">
                   Periodo
                 </label>
@@ -210,14 +208,14 @@ export default function BookingFlow() {
               </div>
 
               {/* Guests */}
-              <div className="rounded-xl border border-brand-beige-dark bg-white p-4">
+              <div className="rounded-2xl border-luxury bg-white p-5 shadow-soft">
                 <label className="mb-2 block text-sm font-medium text-brand-brown-dark">
                   Numero di ospiti
                 </label>
                 <div className="flex items-center gap-3">
                   <button
                     onClick={() => setGuests(Math.max(siteConfig.booking.minGuests, guests - 1))}
-                    className="flex h-10 w-10 items-center justify-center rounded-lg border border-brand-beige-dark text-lg font-medium text-brand-brown transition-colors hover:bg-brand-beige"
+                    className="flex h-10 w-10 items-center justify-center rounded-xl border-luxury text-lg font-medium text-brand-brown transition-colors hover:bg-brand-beige"
                     aria-label="Riduci ospiti"
                   >
                     −
@@ -233,7 +231,7 @@ export default function BookingFlow() {
                   </div>
                   <button
                     onClick={() => setGuests(Math.min(siteConfig.booking.maxGuests, guests + 1))}
-                    className="flex h-10 w-10 items-center justify-center rounded-lg border border-brand-beige-dark text-lg font-medium text-brand-brown transition-colors hover:bg-brand-beige"
+                    className="flex h-10 w-10 items-center justify-center rounded-xl border-luxury text-lg font-medium text-brand-brown transition-colors hover:bg-brand-beige"
                     aria-label="Aggiungi ospiti"
                   >
                     +
@@ -282,20 +280,19 @@ export default function BookingFlow() {
                 </button>
               </div>
 
-              <h2 className="font-display text-2xl tracking-tight">
-                Disponibilità
-              </h2>
+              <p className="overline">Step 3</p>
+              <h2 className="mt-2">Disponibilità</h2>
 
               {loading && (
                 <div className="space-y-3">
                   {[1, 2, 3, 4].map((i) => (
-                    <Skeleton key={i} className="h-16 w-full rounded-xl bg-brand-beige/50" />
+                    <Skeleton key={i} className="h-16 w-full rounded-2xl bg-brand-beige/50" />
                   ))}
                 </div>
               )}
 
               {error && (
-                <div className="flex items-start gap-3 rounded-xl border border-red-200 bg-red-50 p-4">
+                <div className="flex items-start gap-3 rounded-2xl border border-red-200 bg-red-50 p-5">
                   <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-red-500" />
                   <div>
                     <p className="text-sm font-medium text-red-800">{error}</p>
@@ -313,7 +310,7 @@ export default function BookingFlow() {
               {result && !loading && (
                 <>
                   {result.slots.filter((s) => s.available).length === 0 ? (
-                    <div className="rounded-xl border border-brand-beige-dark bg-white p-6 text-center">
+                    <div className="rounded-2xl border-luxury bg-white p-8 text-center shadow-soft">
                       <CalendarDays className="mx-auto h-10 w-10 text-brand-tan/50" />
                       <p className="mt-3 font-display text-lg">
                         Nessuna disponibilità trovata
@@ -345,7 +342,7 @@ export default function BookingFlow() {
                       {Array.from(
                         new Set(result.slots.filter((s) => s.available).map((s) => s.date))
                       ).map((date) => (
-                        <div key={date} className="rounded-xl border border-brand-beige-dark bg-white p-4">
+                        <div key={date} className="rounded-2xl border-luxury bg-white p-5 shadow-soft">
                           <p className="mb-3 text-sm font-semibold text-brand-brown-dark">
                             {format(new Date(date), "EEEE d MMMM", { locale: it })}
                           </p>
@@ -357,10 +354,10 @@ export default function BookingFlow() {
                                   key={slot.id}
                                   onClick={() => setSelectedSlot(slot)}
                                   className={cn(
-                                    "rounded-lg border px-4 py-2 text-sm font-medium transition-all",
+                                    "rounded-xl border px-4 py-2.5 text-sm font-medium transition-all duration-200",
                                     selectedSlot?.id === slot.id
-                                      ? "border-brand-brown bg-brand-brown text-white"
-                                      : "border-brand-beige-dark bg-white text-brand-brown hover:border-brand-tan hover:bg-brand-beige"
+                                      ? "border-brand-brown bg-brand-brown text-white shadow-soft"
+                                      : "border-luxury bg-white text-brand-brown hover:border-brand-tan hover:bg-brand-beige"
                                   )}
                                 >
                                   {slot.time}
@@ -376,7 +373,7 @@ export default function BookingFlow() {
                       ))}
 
                       {selectedSlot && (
-                        <div className="rounded-xl border border-green-200 bg-green-50 p-4">
+                        <div className="rounded-2xl border border-green-200 bg-green-50 p-5">
                           <div className="flex items-center gap-2">
                             <CheckCircle2 className="h-5 w-5 text-green-600" />
                             <p className="text-sm font-medium text-green-800">
@@ -424,10 +421,8 @@ export default function BookingFlow() {
         <div className="lg:col-span-1">
           <div className="sticky top-24 space-y-4">
             {/* Summary card */}
-            <div className="rounded-xl border border-brand-beige-dark/40 bg-white p-5">
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-brand-tan-dark">
-                Riepilogo
-              </h3>
+            <div className="rounded-2xl border-luxury bg-white p-6 shadow-soft">
+              <p className="overline">Riepilogo</p>
               <div className="mt-4 space-y-3">
                 <div className="flex items-start gap-3">
                   <Sparkles className="mt-0.5 h-4 w-4 shrink-0 text-brand-brown-light" />
@@ -474,7 +469,7 @@ export default function BookingFlow() {
             </div>
 
             {/* Trust signals */}
-            <div className="rounded-xl border border-brand-beige-dark/40 bg-white p-5">
+            <div className="rounded-2xl border-luxury bg-white p-6 shadow-soft">
               <div className="space-y-3">
                 <div className="flex items-center gap-2.5">
                   <ShieldCheck className="h-4 w-4 text-brand-tan" />
