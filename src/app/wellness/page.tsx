@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Clock, ChevronRight, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import MockMedia from "@/components/MockMedia";
+import { HeroLuxury, SectionHeader, TreatmentCard, FadeIn, LuxuryButton } from "@/components/premium";
 import Breadcrumb from "@/components/Breadcrumb";
 import { siteConfig } from "@/site.config";
 
@@ -29,152 +26,89 @@ const categories = [
   { key: "relax", label: "Relax" },
 ] as const;
 
+const treatmentImages: Record<string, string> = {
+  "percorso-spa": "/images/percorso-spa.jpg",
+  "bagno-turco": "/images/bagno-turco.jpg",
+  "sauna-finlandese": "/images/sauna-finlandese.jpg",
+  "piscina-termale": "/images/piscina-termale.jpg",
+  "massaggio-rilassante": "/images/massaggio.jpg",
+};
+
 export default function WellnessPage() {
   const enabledExperiences = siteConfig.experiences.filter((e) => e.enabled);
 
   return (
     <>
-      {/* Hero */}
-      <section className="relative flex min-h-[50vh] items-end md:min-h-[60vh]">
-        <MockMedia
-          ratio="16:9"
-          className="!absolute inset-0 !aspect-auto h-full"
-          gradient="dark"
-          overlay
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-brown-dark/70 via-brand-brown-dark/20 to-transparent" />
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-12 pt-32 md:px-6 lg:px-8">
-          <h1 className="max-w-xl font-display text-4xl leading-tight text-white md:text-5xl">
-            Wellness
-          </h1>
-          <p className="mt-3 max-w-lg text-base leading-relaxed text-white/80 md:text-lg">
-            Ogni trattamento è un passo verso il benessere. Scegli il tuo percorso e
-            lasciati guidare.
-          </p>
-        </div>
-      </section>
+      <HeroLuxury
+        image="/images/hero-wellness.jpg"
+        imageAlt="Wellness Sulfurea SPA"
+        overline="Wellness Rituals"
+        title="Wellness"
+        subtitle="Ogni trattamento è un passo verso il benessere. Scegli il tuo percorso e lasciati guidare."
+        minHeight="min-h-[50vh] md:min-h-[60vh]"
+      />
 
-      <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+      <div className="container-luxury">
         <Breadcrumb items={[{ name: "Wellness", href: "/wellness" }]} />
       </div>
 
       {/* Filters + Treatments */}
-      <section className="bg-surface py-12 md:py-20">
-        <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+      <section className="relative bg-surface py-16 md:py-24 radial-glow-top">
+        <div className="container-luxury">
           {/* Category pills */}
-          <div className="flex flex-wrap gap-2">
-            {categories.map((cat) => (
-              <Badge
-                key={cat.key}
-                variant={cat.key === "all" ? "default" : "outline"}
-                className={
-                  cat.key === "all"
-                    ? "bg-brand-brown text-white hover:bg-brand-brown-dark cursor-pointer"
-                    : "border-brand-beige-dark text-brand-brown hover:bg-brand-beige cursor-pointer"
-                }
-              >
-                {cat.label}
-              </Badge>
-            ))}
-          </div>
+          <FadeIn>
+            <div className="flex flex-wrap gap-2">
+              {categories.map((cat) => (
+                <Badge
+                  key={cat.key}
+                  variant={cat.key === "all" ? "default" : "outline"}
+                  className={
+                    cat.key === "all"
+                      ? "bg-brand-brown text-white hover:bg-brand-brown-dark cursor-pointer rounded-xl px-4 py-1.5"
+                      : "border-brand-beige-dark text-brand-brown hover:bg-brand-beige cursor-pointer rounded-xl px-4 py-1.5"
+                  }
+                >
+                  {cat.label}
+                </Badge>
+              ))}
+            </div>
+          </FadeIn>
 
           {/* Grid */}
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {enabledExperiences.map((exp) => (
-              <Card
+              <TreatmentCard
                 key={exp.slug}
-                className="group overflow-hidden border-brand-beige-dark/40 bg-white transition-shadow hover:shadow-lg"
-              >
-                <MockMedia
-                  ratio="4:3"
-                  label={exp.name}
-                  gradient="dark"
-                  className="transition-transform duration-500 group-hover:scale-[1.02]"
-                />
-                <CardContent className="p-5">
-                  <div className="flex items-center gap-2">
-                    <h2 className="font-display text-lg">{exp.name}</h2>
-                    {exp.duration && (
-                      <span className="flex items-center gap-1 rounded-full bg-brand-beige px-2 py-0.5 text-xs text-brand-brown">
-                        <Clock className="h-3 w-3" />
-                        {exp.duration}
-                      </span>
-                    )}
-                  </div>
-                  <Badge
-                    variant="outline"
-                    className="mt-2 border-brand-tan/30 text-brand-tan-dark text-xs capitalize"
-                  >
-                    {exp.category}
-                  </Badge>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    {exp.shortDescription}
-                  </p>
-                  <ul className="mt-3 space-y-1">
-                    {exp.includes.slice(0, 3).map((inc) => (
-                      <li
-                        key={inc}
-                        className="flex items-center gap-2 text-xs text-brand-brown"
-                      >
-                        <span className="h-1 w-1 rounded-full bg-brand-tan" />
-                        {inc}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="mt-4 flex gap-2">
-                    <Button
-                      asChild
-                      size="sm"
-                      variant="outline"
-                      className="border-brand-beige-dark text-brand-brown hover:bg-brand-beige"
-                    >
-                      <Link href={`/wellness/trattamenti/${exp.slug}`}>
-                        Dettagli <ChevronRight className="ml-1 h-3 w-3" />
-                      </Link>
-                    </Button>
-                    <Button
-                      asChild
-                      size="sm"
-                      className="bg-brand-brown text-white hover:bg-brand-brown-dark"
-                    >
-                      <Link href={`/prenota?esperienza=${exp.slug}`}>Prenota</Link>
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
+                slug={exp.slug}
+                name={exp.name}
+                category={exp.category}
+                duration={exp.duration}
+                shortDescription={exp.shortDescription}
+                image={treatmentImages[exp.slug]}
+              />
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="bg-brand-brown py-16 text-white md:py-20">
-        <div className="mx-auto max-w-3xl px-4 text-center md:px-6">
-          <h2 className="font-display text-3xl tracking-tight text-white md:text-4xl">
-            Non sai quale percorso scegliere?
-          </h2>
-          <p className="mt-4 text-base text-brand-tan-light/80">
-            Contattaci e ti aiuteremo a trovare l&apos;esperienza perfetta per te.
-          </p>
-          <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-            <Button
-              asChild
-              size="lg"
-              className="bg-white text-brand-brown-dark hover:bg-brand-beige"
-            >
-              <Link href="/prenota">
+      <section className="relative overflow-hidden bg-brand-brown py-20 text-white md:py-28">
+        <div className="noise-overlay absolute inset-0" />
+        <div className="container-luxury relative z-10 text-center">
+          <FadeIn>
+            <h2 className="text-white">Non sai quale percorso scegliere?</h2>
+            <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-brand-tan-light/75">
+              Contattaci e ti aiuteremo a trovare l&apos;esperienza perfetta per te.
+            </p>
+            <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+              <LuxuryButton href="/prenota" size="lg" className="bg-white text-brand-brown-dark hover:bg-brand-beige">
                 Prenota ora <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="border-white/30 text-white hover:bg-white/10 hover:text-white"
-            >
-              <Link href="/contatti">Contattaci</Link>
-            </Button>
-          </div>
+              </LuxuryButton>
+              <LuxuryButton href="/contatti" size="lg" variant="secondary" className="border-white/15 text-white hover:bg-white/10 hover:text-white">
+                Contattaci
+              </LuxuryButton>
+            </div>
+          </FadeIn>
         </div>
       </section>
     </>

@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Mountain, Compass, UtensilsCrossed, Anchor } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import MockMedia from "@/components/MockMedia";
+import { HeroLuxury, SectionHeader, FeatureCard, FadeIn, LuxuryButton } from "@/components/premium";
 import Breadcrumb from "@/components/Breadcrumb";
 import { siteConfig } from "@/site.config";
 
@@ -21,174 +20,169 @@ export const metadata: Metadata = {
 
 const experiences = [
   {
-    icon: Anchor,
+    icon: <Anchor className="h-5 w-5 text-brand-brown" />,
     title: "Mare e grotte",
     text: "Le grotte di Capo Palinuro, la spiaggia del Buondormire e le acque turchesi della costa cilentana sono raggiungibili in pochi minuti.",
   },
   {
-    icon: Mountain,
+    icon: <Mountain className="h-5 w-5 text-brand-brown" />,
     title: "Trekking e natura",
     text: "Il Parco Nazionale del Cilento offre sentieri tra boschi, cascate e vette panoramiche per ogni livello di esperienza.",
   },
   {
-    icon: Compass,
+    icon: <Compass className="h-5 w-5 text-brand-brown" />,
     title: "Borghi e cultura",
     text: "Pisciotta, Castellabate, Acciaroli: borghi dove il tempo scorre lento, tra vicoli in pietra e piazze affacciate sul mare.",
   },
   {
-    icon: UtensilsCrossed,
+    icon: <UtensilsCrossed className="h-5 w-5 text-brand-brown" />,
     title: "Sapori autentici",
     text: "Il Cilento è la culla della Dieta Mediterranea. Olio d'oliva, mozzarella di bufala, alici e prodotti dell'orto: ogni pasto è un'esperienza.",
   },
 ];
 
+const placeImages: Record<string, string> = {
+  "Capo Palinuro": "/images/cilento-capo-palinuro.jpg",
+  "Parco Nazionale": "/images/cilento-parco.jpg",
+  "Borghi storici": "/images/cilento-borgo.jpg",
+  "Dieta Mediterranea": "/images/cilento-dieta.jpg",
+};
+
 export default function TerritorioPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative flex min-h-[55vh] items-end md:min-h-[65vh]">
-        <MockMedia
-          ratio="16:9"
-          className="!absolute inset-0 !aspect-auto h-full"
-          gradient="dark"
-          overlay
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-brown-dark/70 via-brand-brown-dark/20 to-transparent" />
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-12 pt-32 md:px-6 lg:px-8">
-          <p className="text-xs font-semibold uppercase tracking-wider text-brand-tan-light">
-            Il territorio
-          </p>
-          <h1 className="mt-2 max-w-xl font-display text-4xl leading-tight text-white md:text-5xl">
-            Cilento
-          </h1>
-          <p className="mt-3 max-w-lg text-base leading-relaxed text-white/80 md:text-lg">
-            {siteConfig.territory.description}
-          </p>
-        </div>
-      </section>
+      <HeroLuxury
+        image="/images/hero-territorio.jpg"
+        imageAlt="Costa del Cilento"
+        overline="Il Territorio"
+        title="Cilento"
+        subtitle={siteConfig.territory.description}
+        minHeight="min-h-[55vh] md:min-h-[65vh]"
+      />
 
-      <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+      <div className="container-luxury">
         <Breadcrumb items={[{ name: "Territorio", href: "/territorio" }]} />
       </div>
 
       {/* Highlights */}
-      <section className="bg-surface py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
-          <h2 className="text-center font-display text-3xl tracking-tight md:text-4xl">
-            Cosa vivere nel Cilento
-          </h2>
-          <p className="mx-auto mt-3 max-w-xl text-center text-base text-muted-foreground">
-            Un territorio patrimonio UNESCO che unisce mare, montagna, storia e
-            gastronomia in un paesaggio unico.
-          </p>
+      <section className="relative bg-surface py-20 md:py-28 radial-glow-top">
+        <div className="container-luxury">
+          <FadeIn>
+            <SectionHeader
+              overline="Esperienze"
+              title="Cosa vivere nel Cilento"
+              description="Un territorio patrimonio UNESCO che unisce mare, montagna, storia e gastronomia in un paesaggio unico."
+            />
+          </FadeIn>
           <div className="mt-12 grid gap-8 sm:grid-cols-2">
-            {experiences.map((exp) => (
-              <div
+            {experiences.map((exp, i) => (
+              <FeatureCard
                 key={exp.title}
-                className="flex gap-5 rounded-xl border border-brand-beige-dark/40 bg-white p-6"
-              >
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-beige">
-                  <exp.icon className="h-5 w-5 text-brand-brown" />
-                </div>
-                <div>
-                  <h3 className="font-display text-lg">{exp.title}</h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-                    {exp.text}
-                  </p>
-                </div>
-              </div>
+                icon={exp.icon}
+                title={exp.title}
+                description={exp.text}
+                delay={i * 0.08}
+              />
             ))}
           </div>
         </div>
       </section>
 
       {/* Places grid */}
-      <section className="bg-white py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
-          <h2 className="text-center font-display text-3xl tracking-tight md:text-4xl">
-            Luoghi da scoprire
-          </h2>
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {siteConfig.territory.highlights.map((h) => (
-              <div key={h.name} className="group">
-                <MockMedia
-                  ratio="4:3"
-                  label={h.name}
-                  gradient="dark"
-                  className="rounded-xl transition-transform duration-500 group-hover:scale-[1.02]"
-                />
-                <h3 className="mt-3 font-display text-lg">{h.name}</h3>
-                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                  {h.description}
-                </p>
-              </div>
+      <section className="bg-white py-20 md:py-28">
+        <div className="container-luxury">
+          <FadeIn>
+            <SectionHeader
+              overline="Da Scoprire"
+              title="Luoghi del Cilento"
+            />
+          </FadeIn>
+          <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {siteConfig.territory.highlights.map((h, i) => (
+              <FadeIn key={h.name} delay={i * 0.08}>
+                <div className="group">
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+                    {placeImages[h.name] ? (
+                      <Image
+                        src={placeImages[h.name]}
+                        alt={h.name}
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      />
+                    ) : (
+                      <div className="h-full w-full bg-gradient-to-br from-brand-beige via-brand-tan-light/40 to-brand-beige-dark" />
+                    )}
+                  </div>
+                  <h3 className="mt-4">{h.name}</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                    {h.description}
+                  </p>
+                </div>
+              </FadeIn>
             ))}
           </div>
         </div>
       </section>
 
       {/* Wellness + Territory */}
-      <section className="bg-brand-beige py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
-          <div className="grid items-center gap-10 lg:grid-cols-2">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-brand-tan-dark">
-                Benessere e territorio
-              </p>
-              <h2 className="mt-2 font-display text-3xl tracking-tight md:text-4xl">
-                Il Cilento si vive con lentezza
-              </h2>
-              <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-                Sulfurea nasce in questo territorio non per caso. Il Cilento è da sempre
-                terra di benessere: acque termali, aria pura, alimentazione sana e un
-                ritmo di vita che invita a prendersi cura di sé.
-              </p>
-              <p className="mt-3 text-base leading-relaxed text-muted-foreground">
-                Dopo il percorso SPA, esplora le spiagge di Palinuro, passeggia nei
-                borghi o assapora la cucina locale. Ogni giornata nel Cilento è
-                un&apos;esperienza di benessere a tutto tondo.
-              </p>
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                <Button
-                  asChild
-                  className="bg-brand-brown text-white hover:bg-brand-brown-dark"
-                >
-                  <Link href="/prenota">
+      <section className="relative bg-brand-beige py-20 md:py-28 noise-overlay">
+        <div className="container-luxury relative z-10">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <FadeIn direction="left">
+              <div>
+                <p className="overline">Benessere e Territorio</p>
+                <h2 className="mt-3">Il Cilento si vive con lentezza</h2>
+                <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+                  Sulfurea nasce in questo territorio non per caso. Il Cilento è da sempre
+                  terra di benessere: acque termali, aria pura, alimentazione sana e un
+                  ritmo di vita che invita a prendersi cura di sé.
+                </p>
+                <p className="mt-3 text-base leading-relaxed text-muted-foreground">
+                  Dopo il percorso SPA, esplora le spiagge di Palinuro, passeggia nei
+                  borghi o assapora la cucina locale. Ogni giornata nel Cilento è
+                  un&apos;esperienza di benessere a tutto tondo.
+                </p>
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                  <LuxuryButton href="/prenota">
                     Prenota la tua esperienza <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-                <Button
-                  asChild
-                  variant="outline"
-                  className="border-brand-brown text-brand-brown hover:bg-white"
-                >
-                  <Link href="/hotel">Soggiorna nel Cilento</Link>
-                </Button>
+                  </LuxuryButton>
+                  <LuxuryButton href="/hotel" variant="secondary">
+                    Soggiorna nel Cilento
+                  </LuxuryButton>
+                </div>
               </div>
-            </div>
-            <MockMedia ratio="4:3" label="Cilento panorama" className="rounded-xl" />
+            </FadeIn>
+            <FadeIn direction="right">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+                <Image
+                  src="/images/cilento-capo-palinuro.jpg"
+                  alt="Panorama Cilento"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
+            </FadeIn>
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="bg-brand-brown py-16 text-white md:py-20">
-        <div className="mx-auto max-w-3xl px-4 text-center md:px-6">
-          <h2 className="font-display text-3xl tracking-tight text-white md:text-4xl">
-            Vieni a scoprire il Cilento
-          </h2>
-          <p className="mt-4 text-base text-brand-tan-light/80">
-            Prenota il tuo percorso benessere e vivi il territorio che lo ispira.
-          </p>
-          <Button
-            asChild
-            size="lg"
-            className="mt-6 bg-white text-brand-brown-dark hover:bg-brand-beige"
-          >
-            <Link href="/prenota">
-              Prenota ora <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
+      <section className="relative overflow-hidden bg-brand-brown py-20 text-white md:py-28">
+        <div className="noise-overlay absolute inset-0" />
+        <div className="container-luxury relative z-10 text-center">
+          <FadeIn>
+            <h2 className="text-white">Vieni a scoprire il Cilento</h2>
+            <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-brand-tan-light/75">
+              Prenota il tuo percorso benessere e vivi il territorio che lo ispira.
+            </p>
+            <div className="mt-8">
+              <LuxuryButton href="/prenota" size="lg" className="bg-white text-brand-brown-dark hover:bg-brand-beige">
+                Prenota ora <ArrowRight className="ml-2 h-4 w-4" />
+              </LuxuryButton>
+            </div>
+          </FadeIn>
         </div>
       </section>
     </>

@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Bed, Utensils, MapPin, Waves } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import MockMedia from "@/components/MockMedia";
+import { HeroLuxury, SectionHeader, FadeIn, LuxuryButton } from "@/components/premium";
 import Breadcrumb from "@/components/Breadcrumb";
 import { siteConfig } from "@/site.config";
 
@@ -42,156 +41,149 @@ const features = [
   },
 ];
 
+const hotelGallery = [
+  { src: "/images/hotel-camera.jpg", alt: "Camera" },
+  { src: "/images/hotel-vista.jpg", alt: "Vista mare" },
+  { src: "/images/hotel-terrazza.jpg", alt: "Terrazza" },
+  { src: "/images/hotel-colazione.jpg", alt: "Colazione" },
+  { src: "/images/hotel-ingresso.jpg", alt: "Ingresso" },
+  { src: "/images/hotel-piscina.jpg", alt: "Piscina hotel" },
+];
+
 export default function HotelPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative flex min-h-[55vh] items-end md:min-h-[65vh]">
-        <MockMedia
-          ratio="16:9"
-          className="!absolute inset-0 !aspect-auto h-full"
-          gradient="dark"
-          overlay
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-brown-dark/70 via-brand-brown-dark/20 to-transparent" />
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-12 pt-32 md:px-6 lg:px-8">
-          <p className="text-xs font-semibold uppercase tracking-wider text-brand-tan-light">
-            Completa l&apos;esperienza
-          </p>
-          <h1 className="mt-2 max-w-xl font-display text-4xl leading-tight text-white md:text-5xl">
-            {siteConfig.hotel.name}
-          </h1>
-          <p className="mt-3 max-w-lg text-base leading-relaxed text-white/80 md:text-lg">
-            {siteConfig.hotel.description}
-          </p>
-        </div>
-      </section>
+      <HeroLuxury
+        image="/images/hero-hotel.jpg"
+        imageAlt="Hotel La Torre Palinuro"
+        overline="Completa l'esperienza"
+        title={siteConfig.hotel.name}
+        subtitle={siteConfig.hotel.description}
+        minHeight="min-h-[55vh] md:min-h-[65vh]"
+      />
 
-      <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+      <div className="container-luxury">
         <Breadcrumb items={[{ name: "Hotel", href: "/hotel" }]} />
       </div>
 
       {/* Features */}
-      <section className="bg-surface py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
-          <h2 className="text-center font-display text-3xl tracking-tight md:text-4xl">
-            Perché scegliere Hotel La Torre
-          </h2>
-          <p className="mx-auto mt-3 max-w-xl text-center text-base text-muted-foreground">
-            Un soggiorno che si integra perfettamente con la tua esperienza di benessere a Sulfurea.
-          </p>
+      <section className="relative bg-surface py-20 md:py-28 radial-glow-top">
+        <div className="container-luxury">
+          <FadeIn>
+            <SectionHeader
+              overline="I Vantaggi"
+              title="Perché scegliere Hotel La Torre"
+              description="Un soggiorno che si integra perfettamente con la tua esperienza di benessere a Sulfurea."
+            />
+          </FadeIn>
           <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {features.map((f) => (
-              <div key={f.title} className="text-center">
-                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-brand-beige">
-                  <f.icon className="h-6 w-6 text-brand-brown" />
+            {features.map((f, i) => (
+              <FadeIn key={f.title} delay={i * 0.08}>
+                <div className="text-center">
+                  <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-beige">
+                    <f.icon className="h-6 w-6 text-brand-brown" />
+                  </div>
+                  <h3 className="mt-5">{f.title}</h3>
+                  <p className="mx-auto mt-2 text-sm leading-relaxed text-muted-foreground">
+                    {f.text}
+                  </p>
                 </div>
-                <h3 className="mt-4 font-display text-lg">{f.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {f.text}
-                </p>
-              </div>
+              </FadeIn>
             ))}
           </div>
         </div>
       </section>
 
       {/* Cross-sell */}
-      <section className="bg-white py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
-          <div className="grid items-center gap-10 lg:grid-cols-2">
-            <MockMedia ratio="4:3" label="Hotel La Torre" className="rounded-xl" />
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-brand-tan-dark">
-                Pacchetto combinato
-              </p>
-              <h2 className="mt-2 font-display text-3xl tracking-tight md:text-4xl">
-                Soggiorno + SPA
-              </h2>
-              <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-                Unisci il comfort dell&apos;Hotel La Torre con il percorso benessere di
-                Sulfurea SPA. Un&apos;esperienza completa per vivere il Cilento con
-                lentezza: giornate tra mare, relax e natura.
-              </p>
-              <p className="mt-3 text-base leading-relaxed text-muted-foreground">
-                I pacchetti combinati includono pernottamento, colazione e accesso al
-                percorso SPA completo per due persone.
-              </p>
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                <Button
-                  asChild
-                  className="bg-brand-brown text-white hover:bg-brand-brown-dark"
-                >
-                  <Link href="/prenota?pacchetto=cilento-relax">
-                    Verifica disponibilità <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-                {siteConfig.hotel.url && (
-                  <Button
-                    asChild
-                    variant="outline"
-                    className="border-brand-brown text-brand-brown hover:bg-brand-beige"
-                  >
-                    <a
-                      href={siteConfig.hotel.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Sito Hotel La Torre
-                    </a>
-                  </Button>
-                )}
+      <section className="bg-white py-20 md:py-28">
+        <div className="container-luxury">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <FadeIn direction="left">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+                <Image
+                  src="/images/hotel-vista.jpg"
+                  alt="Hotel La Torre vista mare"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="noise-overlay absolute inset-0" />
               </div>
-            </div>
+            </FadeIn>
+            <FadeIn direction="right">
+              <div>
+                <p className="overline">Pacchetto Combinato</p>
+                <h2 className="mt-3">Soggiorno + SPA</h2>
+                <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+                  Unisci il comfort dell&apos;Hotel La Torre con il percorso benessere di
+                  Sulfurea SPA. Un&apos;esperienza completa per vivere il Cilento con
+                  lentezza: giornate tra mare, relax e natura.
+                </p>
+                <p className="mt-3 text-base leading-relaxed text-muted-foreground">
+                  I pacchetti combinati includono pernottamento, colazione e accesso al
+                  percorso SPA completo per due persone.
+                </p>
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                  <LuxuryButton href="/prenota?pacchetto=cilento-relax">
+                    Verifica disponibilità <ArrowRight className="ml-2 h-4 w-4" />
+                  </LuxuryButton>
+                  {siteConfig.hotel.url && (
+                    <LuxuryButton href={siteConfig.hotel.url} external variant="secondary">
+                      Sito Hotel La Torre
+                    </LuxuryButton>
+                  )}
+                </div>
+              </div>
+            </FadeIn>
           </div>
         </div>
       </section>
 
       {/* Gallery */}
-      <section className="bg-brand-beige py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
-          <h2 className="text-center font-display text-3xl tracking-tight md:text-4xl">
-            Scorci dall&apos;hotel
-          </h2>
-          <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4">
-            <MockMedia ratio="4:3" label="Camera" className="rounded-lg" />
-            <MockMedia ratio="4:3" label="Vista mare" className="rounded-lg" />
-            <MockMedia ratio="4:3" label="Terrazza" className="rounded-lg" />
-            <MockMedia ratio="4:3" label="Colazione" className="rounded-lg" />
-            <MockMedia ratio="4:3" label="Ingresso" className="rounded-lg" />
-            <MockMedia ratio="4:3" label="Piscina hotel" className="rounded-lg" />
+      <section className="relative bg-brand-beige py-20 md:py-28 noise-overlay">
+        <div className="container-luxury relative z-10">
+          <FadeIn>
+            <SectionHeader
+              overline="L'Hotel"
+              title="Scorci dall'hotel"
+            />
+          </FadeIn>
+          <div className="mt-12 grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4">
+            {hotelGallery.map((img, i) => (
+              <FadeIn key={i} delay={i * 0.05}>
+                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    className="object-cover transition-transform duration-700 hover:scale-[1.03]"
+                    sizes="(max-width: 768px) 50vw, 33vw"
+                  />
+                </div>
+              </FadeIn>
+            ))}
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="bg-brand-brown py-16 text-white md:py-20">
-        <div className="mx-auto max-w-3xl px-4 text-center md:px-6">
-          <h2 className="font-display text-3xl tracking-tight text-white md:text-4xl">
-            Prenota il tuo soggiorno benessere
-          </h2>
-          <p className="mt-4 text-base text-brand-tan-light/80">
-            Hotel La Torre + Sulfurea SPA: il modo migliore per vivere il Cilento.
-          </p>
-          <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-            <Button
-              asChild
-              size="lg"
-              className="bg-white text-brand-brown-dark hover:bg-brand-beige"
-            >
-              <Link href="/prenota">
+      <section className="relative overflow-hidden bg-brand-brown py-20 text-white md:py-28">
+        <div className="noise-overlay absolute inset-0" />
+        <div className="container-luxury relative z-10 text-center">
+          <FadeIn>
+            <h2 className="text-white">Prenota il tuo soggiorno benessere</h2>
+            <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-brand-tan-light/75">
+              Hotel La Torre + Sulfurea SPA: il modo migliore per vivere il Cilento.
+            </p>
+            <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+              <LuxuryButton href="/prenota" size="lg" className="bg-white text-brand-brown-dark hover:bg-brand-beige">
                 Prenota ora <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="border-white/30 text-white hover:bg-white/10 hover:text-white"
-            >
-              <Link href="/contatti">Contattaci</Link>
-            </Button>
-          </div>
+              </LuxuryButton>
+              <LuxuryButton href="/contatti" size="lg" variant="secondary" className="border-white/15 text-white hover:bg-white/10 hover:text-white">
+                Contattaci
+              </LuxuryButton>
+            </div>
+          </FadeIn>
         </div>
       </section>
     </>

@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Droplets, Flame, Wind, Heart } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import MockMedia from "@/components/MockMedia";
+import { HeroLuxury, SectionHeader, FadeIn, LuxuryButton, FeatureCard } from "@/components/premium";
 import Breadcrumb from "@/components/Breadcrumb";
 import { siteConfig } from "@/site.config";
 
@@ -45,154 +44,146 @@ const pillars = [
 export default function SulfureaPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative flex min-h-[60vh] items-end md:min-h-[70vh]">
-        <MockMedia
-          ratio="16:9"
-          className="!absolute inset-0 !aspect-auto h-full"
-          gradient="dark"
-          overlay
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-brown-dark/70 via-brand-brown-dark/20 to-transparent" />
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-12 pt-32 md:px-6 lg:px-8">
-          <h1 className="max-w-xl font-display text-4xl leading-tight text-white md:text-5xl">
-            Sulfurea
-          </h1>
-          <p className="mt-3 max-w-lg text-base leading-relaxed text-white/80 md:text-lg">
-            Un luogo dove l&apos;acqua, il calore e il silenzio si incontrano per
-            restituirti benessere autentico.
-          </p>
-        </div>
-      </section>
+      <HeroLuxury
+        image="/images/hero-sulfurea.jpg"
+        imageAlt="Sulfurea SPA interni"
+        title="Sulfurea"
+        subtitle="Un luogo dove l'acqua, il calore e il silenzio si incontrano per restituirti benessere autentico."
+        minHeight="min-h-[60vh] md:min-h-[70vh]"
+      />
 
-      <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+      <div className="container-luxury">
         <Breadcrumb items={[{ name: "Sulfurea", href: "/sulfurea" }]} />
       </div>
 
       {/* Identity */}
-      <section className="bg-surface py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
-          <div className="grid items-center gap-10 lg:grid-cols-2">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-brand-tan-dark">
-                La nostra identità
-              </p>
-              <h2 className="mt-2 font-display text-3xl tracking-tight md:text-4xl">
-                Benessere che nasce dalla terra
-              </h2>
-              <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-                Sulfurea nasce dall&apos;incontro tra la tradizione termale del Cilento e
-                un approccio contemporaneo al benessere. Non un semplice centro
-                wellness, ma uno spazio pensato per accompagnare ogni ospite in un
-                viaggio sensoriale autentico.
-              </p>
-              <p className="mt-3 text-base leading-relaxed text-muted-foreground">
-                Ogni dettaglio — dalla temperatura dell&apos;acqua alla scelta delle
-                essenze — è calibrato per offrire un&apos;esperienza che rispetti i ritmi
-                naturali del corpo e della mente.
-              </p>
-              <Button
-                asChild
-                className="mt-6 bg-brand-brown text-white hover:bg-brand-brown-dark"
-              >
-                <Link href="/wellness">
-                  Scopri i percorsi <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-            </div>
-            <MockMedia ratio="4:3" label="Sulfurea interni" className="rounded-xl" />
+      <section className="relative bg-surface py-20 md:py-28 radial-glow-top">
+        <div className="container-luxury">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <FadeIn direction="left">
+              <div>
+                <p className="overline">La Nostra Identità</p>
+                <h2 className="mt-3">Benessere che nasce dalla terra</h2>
+                <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+                  Sulfurea nasce dall&apos;incontro tra la tradizione termale del Cilento e
+                  un approccio contemporaneo al benessere. Non un semplice centro
+                  wellness, ma uno spazio pensato per accompagnare ogni ospite in un
+                  viaggio sensoriale autentico.
+                </p>
+                <p className="mt-3 text-base leading-relaxed text-muted-foreground">
+                  Ogni dettaglio — dalla temperatura dell&apos;acqua alla scelta delle
+                  essenze — è calibrato per offrire un&apos;esperienza che rispetti i ritmi
+                  naturali del corpo e della mente.
+                </p>
+                <div className="mt-8">
+                  <LuxuryButton href="/wellness">
+                    Scopri i percorsi <ArrowRight className="ml-2 h-4 w-4" />
+                  </LuxuryButton>
+                </div>
+              </div>
+            </FadeIn>
+            <FadeIn direction="right">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+                <Image
+                  src="/images/sulfurea-interni.jpg"
+                  alt="Interni Sulfurea SPA"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="noise-overlay absolute inset-0" />
+              </div>
+            </FadeIn>
           </div>
         </div>
       </section>
 
       {/* Pillars */}
-      <section className="bg-white py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
-          <h2 className="text-center font-display text-3xl tracking-tight md:text-4xl">
-            I quattro elementi del percorso
-          </h2>
-          <p className="mx-auto mt-3 max-w-xl text-center text-base text-muted-foreground">
-            Ogni tappa di Sulfurea è guidata da un elemento naturale, per un&apos;esperienza
-            completa e armoniosa.
-          </p>
+      <section className="bg-white py-20 md:py-28">
+        <div className="container-luxury">
+          <FadeIn>
+            <SectionHeader
+              overline="I Quattro Elementi"
+              title="I pilastri del percorso"
+              description="Ogni tappa di Sulfurea è guidata da un elemento naturale, per un'esperienza completa e armoniosa."
+            />
+          </FadeIn>
           <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {pillars.map((p) => (
-              <div key={p.title} className="text-center">
-                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-brand-beige">
-                  <p.icon className="h-6 w-6 text-brand-brown" />
+            {pillars.map((p, i) => (
+              <FadeIn key={p.title} delay={i * 0.08}>
+                <div className="text-center">
+                  <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-beige">
+                    <p.icon className="h-6 w-6 text-brand-brown" />
+                  </div>
+                  <h3 className="mt-5">{p.title}</h3>
+                  <p className="mx-auto mt-2 text-sm leading-relaxed text-muted-foreground">
+                    {p.text}
+                  </p>
                 </div>
-                <h3 className="mt-4 font-display text-xl">{p.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {p.text}
-                </p>
-              </div>
+              </FadeIn>
             ))}
           </div>
         </div>
       </section>
 
       {/* Experience */}
-      <section className="bg-brand-beige py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
-          <div className="grid items-center gap-10 lg:grid-cols-2">
-            <MockMedia ratio="4:3" label="Esperienza" className="rounded-xl" />
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-brand-tan-dark">
-                L&apos;esperienza
-              </p>
-              <h2 className="mt-2 font-display text-3xl tracking-tight md:text-4xl">
-                Due ore per ritrovare te stesso
-              </h2>
-              <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-                Il percorso Sulfurea dura circa due ore e si sviluppa attraverso ambienti
-                diversi: dal calore avvolgente del bagno turco al vigore della sauna
-                finlandese, fino all&apos;immersione nella piscina termale e al riposo
-                finale nell&apos;area relax.
-              </p>
-              <p className="mt-3 text-base leading-relaxed text-muted-foreground">
-                Non ci sono orari da rispettare all&apos;interno del percorso: ogni ospite
-                è libero di seguire il proprio ritmo, alternando le tappe come preferisce.
-              </p>
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                <Button
-                  asChild
-                  className="bg-brand-brown text-white hover:bg-brand-brown-dark"
-                >
-                  <Link href="/prenota">
-                    Prenota ora <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-                <Button
-                  asChild
-                  variant="outline"
-                  className="border-brand-brown text-brand-brown hover:bg-white"
-                >
-                  <Link href="/wellness">Dettagli trattamenti</Link>
-                </Button>
+      <section className="relative bg-brand-beige py-20 md:py-28 noise-overlay">
+        <div className="container-luxury relative z-10">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <FadeIn direction="left">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+                <Image
+                  src="/images/esperienza.jpg"
+                  alt="Esperienza Sulfurea"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
               </div>
-            </div>
+            </FadeIn>
+            <FadeIn direction="right">
+              <div>
+                <p className="overline">L&apos;Esperienza</p>
+                <h2 className="mt-3">Due ore per ritrovare te stesso</h2>
+                <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+                  Il percorso Sulfurea dura circa due ore e si sviluppa attraverso ambienti
+                  diversi: dal calore avvolgente del bagno turco al vigore della sauna
+                  finlandese, fino all&apos;immersione nella piscina termale e al riposo
+                  finale nell&apos;area relax.
+                </p>
+                <p className="mt-3 text-base leading-relaxed text-muted-foreground">
+                  Non ci sono orari da rispettare all&apos;interno del percorso: ogni ospite
+                  è libero di seguire il proprio ritmo, alternando le tappe come preferisce.
+                </p>
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                  <LuxuryButton href="/prenota">
+                    Prenota ora <ArrowRight className="ml-2 h-4 w-4" />
+                  </LuxuryButton>
+                  <LuxuryButton href="/wellness" variant="secondary">
+                    Dettagli trattamenti
+                  </LuxuryButton>
+                </div>
+              </div>
+            </FadeIn>
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="bg-brand-brown py-16 text-white md:py-20">
-        <div className="mx-auto max-w-3xl px-4 text-center md:px-6">
-          <h2 className="font-display text-3xl tracking-tight text-white md:text-4xl">
-            Vivi Sulfurea
-          </h2>
-          <p className="mt-4 text-base text-brand-tan-light/80">
-            Prenota il tuo percorso di benessere nel cuore del Cilento.
-          </p>
-          <Button
-            asChild
-            size="lg"
-            className="mt-6 bg-white text-brand-brown-dark hover:bg-brand-beige"
-          >
-            <Link href="/prenota">
-              Prenota ora <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
+      <section className="relative overflow-hidden bg-brand-brown py-20 text-white md:py-28">
+        <div className="noise-overlay absolute inset-0" />
+        <div className="container-luxury relative z-10 text-center">
+          <FadeIn>
+            <h2 className="text-white">Vivi Sulfurea</h2>
+            <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-brand-tan-light/75">
+              Prenota il tuo percorso di benessere nel cuore del Cilento.
+            </p>
+            <div className="mt-8">
+              <LuxuryButton href="/prenota" size="lg" className="bg-white text-brand-brown-dark hover:bg-brand-beige">
+                Prenota ora <ArrowRight className="ml-2 h-4 w-4" />
+              </LuxuryButton>
+            </div>
+          </FadeIn>
         </div>
       </section>
     </>

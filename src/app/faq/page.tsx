@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { FadeIn, LuxuryButton } from "@/components/premium";
 import Breadcrumb from "@/components/Breadcrumb";
 import { FAQJsonLd } from "@/components/JsonLd";
 import { siteConfig } from "@/site.config";
@@ -27,64 +26,59 @@ export const metadata: Metadata = {
 
 export default function FAQPage() {
   return (
-    <div className="bg-surface pt-20 md:pt-24">
+    <div className="bg-surface pt-24 md:pt-28">
       <FAQJsonLd faqs={siteConfig.faq} />
 
       <div className="mx-auto max-w-3xl px-4 md:px-6 lg:px-8">
         <Breadcrumb items={[{ name: "FAQ", href: "/faq" }]} />
 
-        <div className="pb-6">
-          <h1 className="font-display text-3xl tracking-tight md:text-4xl">
-            Domande frequenti
-          </h1>
-          <p className="mt-2 text-base text-muted-foreground">
-            Tutto quello che serve sapere prima della tua visita a Sulfurea SPA.
-          </p>
-        </div>
-
-        <Accordion type="single" collapsible className="pb-12">
-          {siteConfig.faq.map((item, i) => (
-            <AccordionItem
-              key={i}
-              value={`faq-${i}`}
-              className="border-brand-beige-dark/40"
-            >
-              <AccordionTrigger className="text-left text-sm font-medium text-brand-brown-dark hover:text-brand-brown hover:no-underline md:text-base">
-                {item.question}
-              </AccordionTrigger>
-              <AccordionContent className="text-sm leading-relaxed text-muted-foreground md:text-base">
-                {item.answer}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
-
-        <div className="border-t border-brand-beige-dark/40 py-10 text-center">
-          <h2 className="font-display text-2xl">Non trovi la risposta?</h2>
-          <p className="mt-2 text-sm text-muted-foreground">
-            Contattaci direttamente, siamo a disposizione per qualsiasi domanda.
-          </p>
-          <div className="mt-5 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-            <Button
-              asChild
-              className="bg-brand-brown text-white hover:bg-brand-brown-dark"
-            >
-              <Link href="/contatti">
-                Contattaci <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-            <Button
-              asChild
-              variant="outline"
-              className="border-brand-brown text-brand-brown hover:bg-brand-beige"
-            >
-              <Link href="/prenota">Prenota ora</Link>
-            </Button>
+        <FadeIn>
+          <div className="pb-8">
+            <p className="overline">Informazioni Utili</p>
+            <h1 className="mt-3">Domande frequenti</h1>
+            <p className="mt-3 text-base leading-relaxed text-muted-foreground">
+              Tutto quello che serve sapere prima della tua visita a Sulfurea SPA.
+            </p>
           </div>
-        </div>
+        </FadeIn>
+
+        <FadeIn>
+          <Accordion type="single" collapsible className="pb-12">
+            {siteConfig.faq.map((item, i) => (
+              <AccordionItem
+                key={i}
+                value={`faq-${i}`}
+                className="border-brand-beige-dark/30"
+              >
+                <AccordionTrigger className="text-left text-sm font-medium text-brand-brown-dark hover:text-brand-brown hover:no-underline md:text-base">
+                  {item.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-sm leading-relaxed text-muted-foreground md:text-base">
+                  {item.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </FadeIn>
+
+        <FadeIn>
+          <div className="border-t border-brand-beige-dark/30 py-12 text-center">
+            <h2>Non trovi la risposta?</h2>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              Contattaci direttamente, siamo a disposizione per qualsiasi domanda.
+            </p>
+            <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+              <LuxuryButton href="/contatti">
+                Contattaci <ArrowRight className="ml-2 h-4 w-4" />
+              </LuxuryButton>
+              <LuxuryButton href="/prenota" variant="secondary">
+                Prenota ora
+              </LuxuryButton>
+            </div>
+          </div>
+        </FadeIn>
       </div>
 
-      {/* Spacer for mobile bar */}
       <div className="h-8" />
     </div>
   );
