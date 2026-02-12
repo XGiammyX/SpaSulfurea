@@ -121,7 +121,7 @@ export default function BookingFlow() {
           {/* Step 1: Experience */}
           {step === 1 && (
             <div className="space-y-4">
-              <p className="overline">Step 1</p>
+              <p className="overline">Passo 1</p>
               <h2 className="mt-2">Scegli la tua esperienza</h2>
               <div className="grid gap-3 sm:grid-cols-2">
                 {enabledExperiences.map((exp) => (
@@ -167,7 +167,7 @@ export default function BookingFlow() {
                 </button>
               </div>
 
-              <p className="overline">Step 2</p>
+              <p className="overline">Passo 2</p>
               <h2 className="mt-2">Seleziona date e ospiti</h2>
 
               {/* Date picker */}
@@ -280,7 +280,7 @@ export default function BookingFlow() {
                 </button>
               </div>
 
-              <p className="overline">Step 3</p>
+              <p className="overline">Passo 3</p>
               <h2 className="mt-2">Disponibilità</h2>
 
               {loading && (

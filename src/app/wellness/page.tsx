@@ -42,7 +42,7 @@ export default function WellnessPage() {
       <HeroLuxury
         image="/images/hero-wellness.jpg"
         imageAlt="Wellness Sulfurea SPA"
-        overline="Wellness Rituals"
+        overline="I Nostri Percorsi"
         title="Wellness"
         subtitle="Ogni trattamento è un passo verso il benessere. Scegli il tuo percorso e lasciati guidare."
         minHeight="min-h-[50vh] md:min-h-[60vh]"
