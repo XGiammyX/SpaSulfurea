@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Image from "next/image";
 import {
   ShieldCheck,
@@ -58,21 +57,6 @@ export default function HomePage() {
           </LuxuryButton>
         </div>
 
-        {/* Mini booking launcher (desktop) — links to /prenota */}
-        <Link
-          href="/prenota"
-          className="mt-8 hidden max-w-lg items-center gap-4 rounded-2xl border border-white/10 bg-white/10 p-4 backdrop-blur-md transition-colors hover:bg-white/15 lg:flex"
-        >
-          <div className="flex-1 text-sm text-white/80">
-            <span className="block text-[11px] font-semibold uppercase tracking-[0.12em] text-white/50">
-              Prenota online
-            </span>
-            Verifica disponibilità e prenota la tua esperienza
-          </div>
-          <span className="flex h-11 items-center rounded-xl bg-white/90 px-5 text-sm font-semibold text-brand-brown-dark">
-            Verifica
-          </span>
-        </Link>
       </HeroLuxury>
 
       {/* ══ TRUST BAR ══ */}
@@ -100,7 +84,7 @@ export default function HomePage() {
       <section className="relative bg-surface section-padding radial-glow-top">
         <div className="container-luxury">
           <SectionHeader
-            overline="Wellness Rituals"
+            overline="I Nostri Percorsi"
             title="Il tuo percorso di benessere"
             description="Ogni tappa — dal bagno turco alla piscina termale — è pensata per accompagnarti verso un profondo rilassamento."
           />
@@ -140,7 +124,7 @@ export default function HomePage() {
               <div className="noise-overlay absolute inset-0" />
             </div>
             <div>
-              <p className="overline">Sulfurea Experience</p>
+              <p className="overline">L&apos;Esperienza</p>
               <h2 className="mt-3">Due ore per ritrovare te stesso</h2>
               <p className="mt-4 text-base leading-relaxed text-muted-foreground">
                 Il percorso Sulfurea si sviluppa attraverso ambienti diversi: dal
