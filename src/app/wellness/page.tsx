@@ -53,7 +53,7 @@ export default function WellnessPage() {
       </div>
 
       {/* Filters + Treatments */}
-      <section className="relative bg-surface py-16 md:py-24 radial-glow-top">
+      <section className="relative bg-surface section-padding radial-glow-top">
         <div className="container-luxury">
           {/* Category pills */}
           <FadeIn>
@@ -92,7 +92,7 @@ export default function WellnessPage() {
       </section>
 
       {/* CTA */}
-      <section className="relative overflow-hidden bg-brand-brown py-20 text-white md:py-28">
+      <section className="relative overflow-hidden bg-brand-brown py-16 text-white md:py-24">
         <div className="noise-overlay absolute inset-0" />
         <div className="container-luxury relative z-10 text-center">
           <FadeIn>

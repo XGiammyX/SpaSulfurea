@@ -60,7 +60,7 @@ export default function TerritorioPage() {
       </div>
 
       {/* Highlights */}
-      <section className="relative bg-surface py-20 md:py-28 radial-glow-top">
+      <section className="relative bg-surface section-padding radial-glow-top">
         <div className="container-luxury">
           <FadeIn>
             <SectionHeader
@@ -84,7 +84,7 @@ export default function TerritorioPage() {
       </section>
 
       {/* Places grid */}
-      <section className="bg-white py-20 md:py-28">
+      <section className="bg-white section-padding">
         <div className="container-luxury">
           <FadeIn>
             <SectionHeader
@@ -121,7 +121,7 @@ export default function TerritorioPage() {
       </section>
 
       {/* Wellness + Territory */}
-      <section className="relative bg-brand-beige py-20 md:py-28 noise-overlay">
+      <section className="relative bg-brand-beige section-padding noise-overlay">
         <div className="container-luxury relative z-10">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <FadeIn direction="left">
@@ -164,7 +164,7 @@ export default function TerritorioPage() {
       </section>
 
       {/* CTA */}
-      <section className="relative overflow-hidden bg-brand-brown py-20 text-white md:py-28">
+      <section className="relative overflow-hidden bg-brand-brown py-16 text-white md:py-24">
         <div className="noise-overlay absolute inset-0" />
         <div className="container-luxury relative z-10 text-center">
           <FadeIn>

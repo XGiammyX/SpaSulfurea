@@ -92,7 +92,7 @@ export default async function TreatmentPage({ params }: PageProps) {
       </div>
 
       {/* Content */}
-      <section className="relative bg-surface py-16 md:py-24 radial-glow-top">
+      <section className="relative bg-surface section-padding radial-glow-top">
         <div className="container-luxury">
           <div className="grid gap-12 lg:grid-cols-3">
             {/* Main content */}

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import BrandLogo from "@/components/brand/BrandLogo";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone } from "lucide-react";
@@ -50,16 +50,10 @@ export default function Header() {
       <div className="container-luxury flex h-16 items-center justify-between md:h-20">
         {/* Logo */}
         <Link href="/" className="relative z-10 flex items-center">
-          <Image
-            src="/logo no bg.png"
-            alt="Sulfurea Wellness & SPA"
-            width={160}
-            height={52}
-            className={cn(
-              "h-11 w-auto transition-all duration-300 md:h-14",
-              scrolled || !isHeroPage ? "" : "brightness-0 invert"
-            )}
-            priority
+          <BrandLogo
+            variant="header"
+            size="md"
+            inverted={!(scrolled || !isHeroPage)}
           />
         </Link>
 
@@ -133,13 +127,7 @@ export default function Header() {
             <SheetContent side="right" className="w-[300px] bg-white p-0">
               <div className="flex h-full flex-col">
                 <div className="flex items-center justify-between border-b border-brand-beige-dark/20 px-6 py-5">
-                  <Image
-                    src="/logo no bg.png"
-                    alt="Sulfurea Wellness & SPA"
-                    width={130}
-                    height={42}
-                    className="h-10 w-auto"
-                  />
+                  <BrandLogo variant="header" size="md" />
                   <SheetClose asChild>
                     <button className="rounded-xl p-1.5 text-brand-brown hover:bg-brand-beige" aria-label="Chiudi menu">
                       <X className="h-5 w-5" />
